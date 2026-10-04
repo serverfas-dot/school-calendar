@@ -24,7 +24,6 @@ export default function Admin() {
   const [password, setPassword] = useState('');
   const [authError, setAuthError] = useState('');
   const [isSigningIn, setIsSigningIn] = useState(false);
-  const [isSignup, setIsSignup] = useState(false);
 
   const [events, setEvents] = useState<CalendarEvent[]>([]);
   const [dataLoading, setDataLoading] = useState(true);
@@ -79,17 +78,8 @@ export default function Admin() {
     e.preventDefault();
     setAuthError('');
     setIsSigningIn(true);
-    if (isSignup) {
-      const { error } = await supabase.auth.signUp({ email: email.trim(), password });
-      if (error) setAuthError(error.message);
-      else {
-        const { error: signInError } = await supabase.auth.signInWithPassword({ email: email.trim(), password });
-        if (signInError) setAuthError(signInError.message);
-      }
-    } else {
-      const { error } = await supabase.auth.signInWithPassword({ email: email.trim(), password });
-      if (error) setAuthError(error.message);
-    }
+    const { error } = await supabase.auth.signInWithPassword({ email: email.trim(), password });
+    if (error) setAuthError('Invalid email or password.');
     setIsSigningIn(false);
   }
 
@@ -144,21 +134,18 @@ export default function Admin() {
       <div className="admin-auth-page">
         <form className="admin-auth-card" onSubmit={handleAuth}>
           <div className="admin-auth-icon"><Lock size={24} /></div>
-          <h1>{isSignup ? 'Create admin account' : 'Admin login'}</h1>
-          <p className="admin-auth-sub">{isSignup ? 'Set up your admin credentials' : 'Sign in to manage calendar dates'}</p>
+          <h1>Admin login</h1>
+          <p className="admin-auth-sub">Sign in to manage calendar dates</p>
           {authError && <p className="admin-auth-error">{authError}</p>}
           <label>
             <span>Email</span>
-            <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} required placeholder="admin@school.edu" />
+            <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} required placeholder="admin@schoolcalendar.edu" autoComplete="email" />
           </label>
           <label>
             <span>Password</span>
-            <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} required minLength={6} placeholder="Min 6 characters" />
+            <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} required autoComplete="current-password" />
           </label>
-          <button type="submit" className="admin-auth-btn" disabled={isSigningIn}>{isSigningIn ? 'Please wait…' : isSignup ? 'Create account' : 'Sign in'}</button>
-          <button type="button" className="admin-auth-toggle" onClick={() => { setIsSignup((v) => !v); setAuthError(''); }}>
-            {isSignup ? 'Already have an account? Sign in' : "Don't have an account? Create one"}
-          </button>
+          <button type="submit" className="admin-auth-btn" disabled={isSigningIn}>{isSigningIn ? 'Please wait…' : 'Sign in'}</button>
         </form>
       </div>
     );

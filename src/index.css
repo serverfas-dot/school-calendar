@@ -25,7 +25,7 @@ html, body, #root { height: 100%; }
 .second-hand { height: 93px; width: 2px; margin-left: -1px; background: #ee2027; }
 .clock-center { position: absolute; left: 50%; top: 50%; z-index: 2; width: 12px; height: 12px; transform: translate(-50%, -50%); border: 2px solid #172126; border-radius: 50%; background: #f13f45; }
 .digital-time { margin-top: 22px; color: #090b0c; font: 700 25px 'DM Mono', monospace; letter-spacing: -.08em; }
-.digital-date { margin-top: 3px; color: #242b2e; font: 700 11px 'DM Mono', monospace; letter-spacing: .05em; }
+.digital-date { margin-top: 3px; color: #000; font: 800 11px 'DM Mono', monospace; letter-spacing: .05em; }
 
 .mini-calendar { width: 280px; border: 1px solid #d6e0e4; border-radius: 3px; background: #fff; box-shadow: 0 4px 15px rgba(28,67,80,.07); }
 .calendar-title-row { display: flex; align-items: center; justify-content: center; height: 37px; padding: 0 5px; color: #fff; background: #0d68a5; border-radius: 3px 3px 0 0; }
@@ -52,11 +52,11 @@ html, body, #root { height: 100%; }
 .notice-header { display: flex; align-items: center; gap: 12px; }
 .notice-line { display: block; width: 4px; height: 28px; border-radius: 4px; background: #1e75b3; }
 .notice-header h2 { margin: 0; color: #1d3a4b; font-size: 24px; font-weight: 700; letter-spacing: -.04em; }
-.notice-subtitle { margin: 7px 0 20px 16px; color: #9aa9ae; font-size: 12px; }
+.notice-subtitle { margin: 7px 0 20px 16px; color: #000; font-size: 12px; font-weight: 800; }
 .notice-list { border-top: 1px solid #e5ebed; }
-.notice-row { display: grid; grid-template-columns: 105px 1fr 8px; align-items: center; width: 100%; padding: 13px 0 13px 16px; border-bottom: 1px solid #e5ebed; color: #304b58; }
-.notice-date { color: #82969d; font: 500 10px 'DM Mono', monospace; }
-.notice-name { overflow: hidden; padding-right: 12px; font-size: 12px; font-weight: 700; text-overflow: ellipsis; white-space: nowrap; }
+.notice-row { display: grid; grid-template-columns: 105px 1fr 8px; align-items: center; width: 100%; padding: 13px 0 13px 16px; border-bottom: 1px solid #e5ebed; color: #000; font-weight: 800; }
+.notice-date { color: #000; font: 700 10px 'DM Mono', monospace; }
+.notice-name { overflow: hidden; padding-right: 12px; font-size: 12px; font-weight: 800; text-overflow: ellipsis; white-space: nowrap; color: #000; }
 .notice-dot { width: 7px; height: 7px; border-radius: 50%; }
 .notice-empty { margin: 0 0 0 16px; color: #9aa9ae; font-size: 12px; }
 .notice-error { margin-left: 16px; color: #cc4d51; font-size: 12px; }
